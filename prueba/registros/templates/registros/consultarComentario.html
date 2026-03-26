@@ -1,0 +1,46 @@
+
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %} {% endblock %}
+
+{% block imagen %}
+	{%load static%}
+	{%static 'inicio/images/home.png'%}
+{% endblock %}
+
+{%block Encabezado%}
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+					<h3>Alumnos
+				    <small>Lista de Alumnos</small></h3>
+				</div>
+			</div>
+			<!-- /Encabezado-->
+{%endblock%}
+
+{%block contenido%}
+<!--Tabla de Alumnos-->
+<table class = "table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Usuario</th>
+			<th>Mensaje</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+        {% for coment in mensaje %}
+            <tr>
+                <td class="text-semibold">{{coment.usuario}}</td>
+                <td class="muted">{{coment.mensaje}}</td>
+				<td class="text-center"><a href="{%url 'ConsultaIndividual' coment.id%}">Editar</a></td>
+				<td class="text-center"><a href="{%url 'Eliminar' coment.id%}">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+	</tbody>
+</table>
+<!--/Tabla de Alumnos-->
+{%endblock%}
